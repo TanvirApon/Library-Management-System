@@ -3,12 +3,10 @@
 
 <?php
 session_start();
+$rememberedEmail = isset($_COOKIE['remember_email']) ? $_COOKIE['remember_email'] : "";
 ?>
 
-<?php 
-include('../../Model/Dbconnect.php');
 
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,14 +17,14 @@ include('../../Model/Dbconnect.php');
 
 </head>
 <body>
-	<form action="../Controller/LoginAction.php" method="POST">
-<center>
+	<form action="../Controller/LoginAction.php" method="POST" >
+    <center>
 			<fieldset style="text-align:center; height: 300px; width: 400px;">
 			<legend>Login Here</legend>
 		<table>
 			<tr>
 		<td><label for="email">Email:</label></td>
-		<td><input type="email" name="email" id="email" placeholder="Enter your Email"></td>
+		<td><input type="email" name="email" id="email" placeholder="Enter your Email"value="<?php echo $rememberedEmail; ?>"></td>
         <td><?php echo isset($_SESSION['email_error_msg']) ? $_SESSION['email_error_msg'] : ""?></td></tr>
 		<td></td></tr>
 
@@ -48,7 +46,7 @@ include('../../Model/Dbconnect.php');
 
 		</fieldset>
 	<center>
-	<form>
+</form>
 	<hr> 
 <?php include "Footer.php"; ?>
 

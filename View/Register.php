@@ -11,7 +11,7 @@
 <body>
 
 		<center>
-			<form action="../Controller/RegisterAction.php" method="POST">
+			<form action="../Controller/RegisterAction.php" method="POST" enctype="multipart/form-data">
 			<fieldset style="text-align:center; height: 70%; width: 50%;">
 					<legend> <h3><strong>Resgister</strong></h3></legend> 
 <table>
@@ -62,17 +62,17 @@
       
 	<tr>
 		<td><label for="DOB">DOB:</label></td>
-		<td><input type="date" id="birthday" name="birthday"></td>
-		<td><?php echo isset($_SESSION['email_error_msg']) ? $_SESSION['email_error_msg'] : ""?></td></tr>
+		<td><input type="date" id="dob" name="dob"></td>
+		<td><?php echo isset($_SESSION['dob_error_msg']) ? $_SESSION['email_error_msg'] : ""?></td></tr>
 	</tr>
 
 
 
 					<!-- File Upload  -->
 	<tr>
-		<td><label for="myfile">Select a file:</label></td>
-  		<td><input type="file" id="myfile" name="myfile"></td>
-	   <td><?php echo isset($_SESSION['cpassword_error_msg']) ? $_SESSION['cpassword_error_msg'] : ""?></td></tr>
+		<td><label for="profile_picture">Select a file:</label></td>
+  		<td><input type="file" id="profile_picture" name="profile_picture"></td>
+	   <td><?php echo isset($_SESSION['myfile_error_msg']) ? $_SESSION['cpassword_error_msg'] : ""?></td></tr>
 	</tr>
 
 
