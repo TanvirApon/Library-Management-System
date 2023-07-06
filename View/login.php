@@ -2,8 +2,9 @@
 <!-- Code for Login -->
 
 <?php
-session_start();
 $rememberedEmail = isset($_COOKIE['remember_email']) ? $_COOKIE['remember_email'] : "";
+require '../Controller/LoginAction.php';
+require '../Controller/RegisterAction.php';
 ?>
 
 
@@ -17,25 +18,32 @@ $rememberedEmail = isset($_COOKIE['remember_email']) ? $_COOKIE['remember_email'
 
 </head>
 <body>
-	<form action="../Controller/LoginAction.php" method="POST" >
+	<form action="login.php" method="POST" >
     <center>
 			<fieldset style="text-align:center; height: 300px; width: 400px;">
 			<legend>Login Here</legend>
 		<table>
 			<tr>
 		<td><label for="email">Email:</label></td>
-		<td><input type="email" name="email" id="email" placeholder="Enter your Email"value="<?php echo $rememberedEmail; ?>"></td>
-        <td><?php echo isset($_SESSION['email_error_msg']) ? $_SESSION['email_error_msg'] : ""?></td></tr>
+		<td><input type="email" name="email" id="email" placeholder="Enter your Email"value="<?php 
+					if(isset($_SESSION['log_email'])) {
+						echo $_SESSION['log_email'];
+					} 
+					else
+					{
+						echo $rememberedEmail;
+					}
+					?>" required></td>
 		<td></td></tr>
 
 <tr>
 		<td><label for="password">Password:</label></td>
 		<td><input type="password" name="password" id="password" placeholder="Enter your Password"></td>
-		<td><?php echo isset($_SESSION['password_error_msg']) ? $_SESSION['password_error_msg'] : ""?></td> </tr>
+		<td><?php if(in_array("Email or password was incorrect<br>", $error_array)) echo  "Email or password was incorrect<br>";?></td> </tr>
 		<td></td> </tr>
 
 		<tr><td></td>
-		<td><input type="submit" name="login" value="Login"></td></tr>
+		<td><input type="submit" name="login_button" value="Login"></td></tr>
 		<td></td>
 
 		<tr><td colspan="3"><?php echo isset($_SESSION['global_error_msg']) ? $_SESSION['global_error_msg'] : ""?></td></tr>

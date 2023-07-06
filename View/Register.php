@@ -1,4 +1,9 @@
+<?php
 
+
+require '../Controller/RegisterAction.php';
+
+?>
 <!-- Code for Customer Register -->
 
 <!DOCTYPE html>
@@ -11,7 +16,7 @@
 <body>
 
 		<center>
-			<form action="../Controller/RegisterAction.php" method="POST" enctype="multipart/form-data">
+			<form action="Register.php" method="POST">
 			<fieldset style="text-align:center; height: 70%; width: 50%;">
 					<legend> <h3><strong>Resgister</strong></h3></legend> 
 <table>
@@ -19,16 +24,24 @@
                  <!-- First Name -->
 	<tr>
 		<td><label for="fname">First Name:</label></td>
-		<td><input type="text" name="fname" id="fname"></td>
-		<td><?php echo isset($_SESSION['fname_error_msg']) ? $_SESSION['fname_error_msg'] : ""?></td></tr>
+		<td><input type="text" name="fname" id="fname" value="<?php 
+					if(isset($_SESSION['fname'])) {
+						echo $_SESSION['fname'];
+					} 
+					?>" required></td>
+		<td><?php if(in_array("Your first name must be between 2 and 25 characters<br>", $error_array)) echo "Your first name must be between 2 and 25 characters<br>";?></td></tr>
 
 	</tr>
 
 	              <!-- Last Name -->
     <tr>
 		<td><label for="Lname">Last Name:</label></td>
-		<td><input type="text" name="lname" id="lname"></td>
-        <td><?php echo isset($_SESSION['lname_error_msg']) ? $_SESSION['lname_error_msg'] : ""?></td></tr>   
+		<td><input type="text" name="lname" id="lname" value="<?php 
+					if(isset($_SESSION['reg_lname'])) {
+						echo $_SESSION['reg_lname'];
+					} 
+					?>" required></td>
+        <td><?php if(in_array("Your last name must be between 2 and 25 characters<br>", $error_array)) echo "Your last name must be between 2 and 25 characters<br>";?></td></tr>   
 	</tr>
 
 	   
@@ -36,25 +49,42 @@
                    <!-- Email -->
 	<tr>
 		<td><label for="email">Email:</label></td>
-		<td><input type="text" name="email" id="email"></td>
-		<td><?php echo isset($_SESSION['email_error_msg']) ? $_SESSION['email_error_msg'] : ""?></td></tr>
+		<td><input type="text" name="email" id="email" value="<?php 
+					if(isset($_SESSION['reg_email'])) {
+						echo $_SESSION['reg_email'];
+					} 
+					?>" required></td>
 	</tr>
 
+	      
+	     <!-- Email2 -->
+	<tr>
+		<td><label for="email2">Email:</label></td>
+		<td><input type="text" name="email2" id="email2" value="<?php 
+					if(isset($_SESSION['reg_email2'])) {
+						echo $_SESSION['reg_email2'];
+					} 
+					?>" required></td>
+		<td><?php if(in_array("Email already in use<br>", $error_array)) echo "Email already in use<br>"; 
+					else if(in_array("Invalid email format<br>", $error_array)) echo "Invalid email format<br>";
+					else if(in_array("Emails don't match<br>", $error_array)) echo "Emails don't match<br>"; ?></td></tr>
+	</tr>
 
                      <!-- Password -->
 
     <tr>
 		<td><label for="password">Password:</label></td>
-		<td><input type="password" name="password" id="password"></td>
-		<td><?php echo isset($_SESSION['password_error_msg']) ? $_SESSION['password_error_msg'] : ""?></td></tr>
-	</tr>
+		<td><input type="password" name="password" id="password" required></td>
+		
 
 
 	              <!-- Confirm Password -->
     <tr>
 		<td><label for="cpassword">Confirm Password:</label></td>
-		<td><input type="password" name="cpassword" id="cpassword"></td>
-		<td><?php echo isset($_SESSION['cpassword_error_msg']) ? $_SESSION['cpassword_error_msg'] : ""?></td></tr>
+		<td><input type="password" name="cpassword" id="cpassword" required></td>
+		<td><?php if(in_array("Your passwords do not match<br>", $error_array)) echo "Your passwords do not match<br>"; 
+					else if(in_array("Your password can only contain english characters or numbers<br>", $error_array)) echo "Your password can only contain english characters or numbers<br>";
+					else if(in_array("Your password must be between 4 and 30 characters<br>", $error_array)) echo "Your password must be betwen 5 and 30 characters<br>";?></td></tr>
 	</tr>
 
 
@@ -63,22 +93,13 @@
 	<tr>
 		<td><label for="DOB">DOB:</label></td>
 		<td><input type="date" id="dob" name="dob"></td>
-		<td><?php echo isset($_SESSION['dob_error_msg']) ? $_SESSION['email_error_msg'] : ""?></td></tr>
-	</tr>
-
-
-
-					<!-- File Upload  -->
-	<tr>
-		<td><label for="profile_picture">Select a file:</label></td>
-  		<td><input type="file" id="profile_picture" name="profile_picture"></td>
-	   <td><?php echo isset($_SESSION['myfile_error_msg']) ? $_SESSION['cpassword_error_msg'] : ""?></td></tr>
+		<td><?php ?></td></tr>
 	</tr>
 
 
     
 <tr>
-		<td><input type="submit" name="Submit" value="Add">
+		<td><input type="submit" name="register_button" value="Register">
 		
 
 </table>

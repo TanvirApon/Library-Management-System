@@ -1,24 +1,15 @@
+-- Database Name : library
 
---Sql code for customer table
 
-CREATE TABLE `library_management`.`customer` 
-(`cus_id` INT NOT NULL AUTO_INCREMENT , 
-`username` VARCHAR(100) NOT NULL , 
-`first name` VARCHAR(25) NOT NULL , 
-`last name` VARCHAR(25) NOT NULL , 
-`dob` DATE NOT NULL ,
- `password` VARCHAR(100) NOT NULL , 
- `picture` VARCHAR(255) NOT NULL , 
- PRIMARY KEY (`cus_id`)) 
- ENGINE = InnoDB; 
-
---Adding email in the customer database table
- ALTER TABLE `customer` ADD `email` VARCHAR(100) NOT NULL AFTER `picture`; 
-
---Updating First Name in the customer database table
- ALTER TABLE `customer` CHANGE `first name` `firstname` VARCHAR(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL; 
-
---Updating Last Name in the customer database table
- ALTER TABLE `customer` CHANGE `last name` `lastname` VARCHAR(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL; 
---Updating Password in the customer database table
- ALTER TABLE `customer` CHANGE `password` `cpassword` VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL; 
+-- table:1- customer
+CREATE TABLE `customer` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(25) NOT NULL,
+  `last_name` varchar(25) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `dob` date NOT NULL,
+  `profile_pic` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
