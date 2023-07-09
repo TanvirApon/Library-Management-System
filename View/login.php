@@ -26,8 +26,8 @@ require '../Controller/RegisterAction.php';
 			<tr>
 		<td><label for="email">Email:</label></td>
 		<td><input type="email" name="email" id="email" placeholder="Enter your Email"value="<?php 
-					if(isset($_SESSION['log_email'])) {
-						echo $_SESSION['log_email'];
+					if(isset($_SESSION['email'])) {
+						echo $_SESSION['email'];
 					} 
 					else
 					{

@@ -31,8 +31,8 @@ if(isset($_POST['login_button'])) {
 
 	if($check_login_query == 1) {
 		$row = mysqli_fetch_array($check_database_query);
-		 $username = $row['username'];
-			$_SESSION['username'] = $username;
+		 $fname = $row['first_name'];
+			$_SESSION['first_name'] = $fname;
 			header("Location: ../View/customer/Dashboard.php");
 			exit();
 		}
