@@ -66,45 +66,37 @@ session_start();
 
             <td width="75%">
                 <center>
-                    <h2><strong> Book Details</strong></h2>
+                    <h2><strong> Employee Details</strong></h2>
 
                     <table border="">
                         <tr>
-                            <th>Book id</th>
-                            <th>Title</th>
-                            <th>Author</th>
-                            <th>Publisher</th>
-                            <th>Publication Year</th>
-                            <th>Genre</th>
-                            <th>Quantity</th>
-                            <th>Shelf Number</th>
-                            <th>Language</th>
-                            <th>Total Pages</th>
-                       
+                            <th>Employee id</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Role</th>
+                            
                        
                         </tr>
                         <?php
                         // Connect to the database
                         require '../../Model/Dbconnect.php';
 
-                        $query = "SELECT * FROM book";
+                        $query = "SELECT * FROM employee";
                         $result = mysqli_query($conn, $query);
 
                         if(mysqli_num_rows($result) > 0) {
                             while($row = mysqli_fetch_assoc($result)) {
                                 echo "<tr>";
                                 echo "<td align='middle'>".$row['id']."</td>";
-                                echo "<td align='middle'>".$row['title']."</td>";
-                                echo "<td align='middle'>".$row['author']."</td>";
-                                echo "<td align='middle'>".$row['publisher']."</td>";
-                                echo "<td align='middle'>".$row['publication_year']."</td>";
-                                echo "<td align='middle'>".$row['genre']."</td>";
-                                echo "<td align='middle'>".$row['Quantity']."</td>";
-                                echo "<td align='middle'>".$row['shelf_number']."</td>";
-                                echo "<td align='middle'>".$row['language']."</td>";
-                                echo "<td align='middle'>".$row['total_pages']."</td>";
-                                echo "<td align='middle'><a href='UpdateBook.php?id=".$row['id']."'>Edit</a></td>";
-                                echo "<td align='middle'><a href='../../Controller/DeleteBook.php?id=".$row['id']."'>Delete</a></td>";
+                                echo "<td align='middle'>".$row['first_name']."</td>";
+                                echo "<td align='middle'>".$row['last_name']."</td>";
+                                echo "<td align='middle'>".$row['email']."</td>";
+                                echo "<td align='middle'>".$row['password']."</td>";
+                                echo "<td align='middle'>".$row['role']."</td>";
+                                echo "<td align='middle'><a href='UpdateEmployee.php?id=".$row['id']."'>Edit</a></td>";
+                                echo "<td align='middle'><a href='../../Controller/DeleteEmployee.php?id=".$row['id']."'>Delete</a></td>";
                                 echo "</tr>";
                             }
                         } else {

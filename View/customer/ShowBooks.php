@@ -103,8 +103,7 @@ session_start();
                                 echo "<td align='middle'>".$row['shelf_number']."</td>";
                                 echo "<td align='middle'>".$row['language']."</td>";
                                 echo "<td align='middle'>".$row['total_pages']."</td>";
-                                echo "<td align='middle'><a href='UpdateBook.php?id=".$row['id']."'>Edit</a></td>";
-                                echo "<td align='middle'><a href='../../Controller/DeleteBook.php?id=".$row['id']."'>Delete</a></td>";
+                                echo "<td align='middle'><a href='../issue.php?id=".$row['id']."'>Issue Book</a></td>";
                                 echo "</tr>";
                             }
                         } else {
