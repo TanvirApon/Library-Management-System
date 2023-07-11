@@ -40,7 +40,7 @@ session_start();
                 <hr>
 
                 <ul>
-                    <li> <a href="AddCustomer.php">Add Customer</a> </li>
+                    <li> <a href="../customer/issue.php">Issue</a> </li>
                     <!-- <li> <a href="Message.php">Online Reseveration</a> </li>
                     <li> <a href="Product.php">WishList</a> </li>
                     <li> <a href="Books.php">Book Rating</a> </li>
@@ -66,39 +66,47 @@ session_start();
 
             <td width="75%">
                 <center>
-                    <h2><strong> Customer Details</strong></h2>
+                    <h2><strong> Book Details</strong></h2>
 
                     <table border="">
                         <tr>
-                            <th> id</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>User Name</th>
-                            <th>Email</th>
-                            <th>Password</th>
-                            <th>DOB</th>
-                            
+                            <th>Issued id</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Publisher</th>
+                            <th>Publication Year</th>
+                            <th>Genre</th>
+                            <th>Quantity</th>
+                            <th>Issue Date</th>
+                            <th>Expired Date</th>
+                            <th>Customer Name</th>
+                            <th>Customer Id</th>
+                       
                        
                         </tr>
                         <?php
                         // Connect to the database
                         require '../../Model/Dbconnect.php';
 
-                        $query = "SELECT * FROM customer";
+                        $query = "SELECT * FROM issue";
                         $result = mysqli_query($conn, $query);
 
                         if(mysqli_num_rows($result) > 0) {
                             while($row = mysqli_fetch_assoc($result)) {
                                 echo "<tr>";
                                 echo "<td align='middle'>".$row['id']."</td>";
-                                echo "<td align='middle'>".$row['first_name']."</td>";
-                                echo "<td align='middle'>".$row['last_name']."</td>";
-                                echo "<td align='middle'>".$row['username']."</td>";
-                                echo "<td align='middle'>".$row['email']."</td>";
-                                //echo "<td align='middle'>".$row['password']."</td>";
-                                echo "<td align='middle'>".$row['dob']."</td>";
-                                echo "<td align='middle'><a href='UpdateCustomer.php?id=".$row['id']."'>Edit</a></td>";
-                                echo "<td align='middle'><a href='../../Controller/DeleteCustomer.php?id=".$row['id']."'>Delete</a></td>";
+                                echo "<td align='middle'>".$row['title']."</td>";
+                                echo "<td align='middle'>".$row['author']."</td>";
+                                echo "<td align='middle'>".$row['publisher']."</td>";
+                                echo "<td align='middle'>".$row['publication_year']."</td>";
+                                echo "<td align='middle'>".$row['genre']."</td>";
+                                echo "<td align='middle'>".$row['quantity']."</td>";
+                                echo "<td align='middle'>".$row['issue_date']."</td>";
+                                echo "<td align='middle'>".$row['expired_date']."</td>";
+                                echo "<td align='middle'>".$row['customer_Name']."</td>";
+                                echo "<td align='middle'>".$row['customer_id']."</td>";
+                                echo "<td align='middle'><a href='Updateissue.php?id=".$row['id']."'>Edit</a></td>";
+                                echo "<td align='middle'><a href='../../Controller/Deleteissue.php?id=".$row['id']."'>Delete</a></td>";
                                 echo "</tr>";
                             }
                         } else {

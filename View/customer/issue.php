@@ -2,40 +2,8 @@
 <!-- Code for Admin Test  -->
 
 <?php 
-// Connect to the database
-require '../../Model/Dbconnect.php';
+require '../../Controller/AddEmployeeAction.php';
 
-
-
-// Initialize variables
-$id = $title = $author =  $publisher = $publication_year = $genre =  $quantity = "";
-
-// Check if the 'id' parameter is set in the URL
-if (isset($_GET['id'])) {
-    // Retrieve the book details based on the ID
-    $id = $_GET['id'];
-    $query = "SELECT * FROM book WHERE id = '$id'";
-    $result = mysqli_query($conn, $query);
-
-    // Check if the book record exists
-    if (mysqli_num_rows($result) == 1) {
-        $row = mysqli_fetch_assoc($result);
-        $title = $row["title"];
-        $author = $row["author"];
-        $publisher = $row["publisher"];
-        $publication_year = $row["publication_year"];
-        $genre = $row["genre"];
-        // ...
-    } else {
-        // Redirect to an error page or display an error message
-        echo "Book not found!";
-        exit();
-    }
-} else {
-    // Redirect to an error page or display an error message
-    echo "Book ID not provided!";
-    exit();
-}
 ?>
 
 <!DOCTYPE html>
@@ -59,8 +27,8 @@ if (isset($_GET['id'])) {
 				<h3><strong>User Dashboard</strong></h3>
 				<hr>
 				<ul>
-					<li><a href="Books.php">Book</a></li>
-					<li><a href="Manager.php">Manager</a></li>
+					<li><a href="../admin/ShowBooks.php">Show Books</a></li>
+					<li><a href="../admin/AddBooks.php">Manager</a></li>
 					<li><a href="Libarian.php">Librarian</a></li>
 					<li><a href="Books.php">Customer</a></li>
                     <li><a href="Books.php">Whish List</a></li>
@@ -111,20 +79,19 @@ if (isset($_GET['id'])) {
 					<td><input type="text" id="quantity" name="quantity" required></td>
 					</tr>
 					<tr>
-                    <td><label for="Date">Borrow Period:</label></td>
-                    <td><input type="date" id="date" name="date"></td>
-                    <td><?php ?></td></tr>
+                    <td><label for="Date">Issue Date:</label></td>
+                    <td><input type="date" id="issue_date" name="issue_date"></td>
+                    </tr>
+
+					<tr>
+                    <td><label for="Date">Expired Date:</label></td>
+                    <td><input type="date" id="expired_date" name="expired_date"></td>
                     </tr>
                     <tr>
-					<td><label for="name">Customer Name:</label></td>
+					<td><label for="name">Customer User Name:</label></td>
 					<td><input type="text" id="name" name="name" required></td>
 					</tr>
-                    <?php
-
-
-
-
-                    ?>
+       
                     <tr>
 					<td><label for="id">Customer Id:</label></td>
 					<td><input type="text" id="id" name="id" required></td>
@@ -132,7 +99,7 @@ if (isset($_GET['id'])) {
 					
 					
 					<tr>
-						<td><input type="submit" name="issue_button" value="Add Book">
+						<td><input type="submit" name="issue_button" value="Issue Book">
     </form>
 					</table>
 				</center>

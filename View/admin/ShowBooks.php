@@ -40,11 +40,11 @@ session_start();
                 <hr>
 
                 <ul>
-                    <li> <a href="Books.php">Show Books</a> </li>
-                    <li> <a href="Message.php">Online Reseveration</a> </li>
+                    <li> <a href="AddBooks.php">Add Book</a> </li>
+                    <!-- <li> <a href="Message.php">Online Reseveration</a> </li>
                     <li> <a href="Product.php">WishList</a> </li>
                     <li> <a href="Books.php">Book Rating</a> </li>
-                    <li> <a href="Message.php">Request for a Book</a> </li>
+                    <li> <a href="Message.php">Request for a Book</a> </li> -->
                 </ul>  
 
                 <br>

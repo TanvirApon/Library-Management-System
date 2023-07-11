@@ -35,7 +35,7 @@ session_start();
 	<td align ="middle"width= "25%"><h3><strong>User DashBoard</strong></h3><hr>
 
 <ul>
-  <li> <a href="Books.php">Show Books</a> </li>
+  <li> <a href="../admin/ShowBooks.php">Show Books</a> </li>
   <li> <a href="Message.php">Online Reseveration</a> </li>
   <li> <a href="Product.php">WishList</a> </li>
   <li> <a href="Books.php">Book Rating</a> </li>
@@ -46,21 +46,21 @@ session_start();
 <ul>
 <?php
 			
-			$data = file_get_contents('../Model/user.json');
+			// $data = file_get_contents('../Model/user.json');
 		
-			$data = json_decode($data,true);
-		
-		
-			  $index = 0;
-			foreach($data as $row){
-				echo "
-				<li> <a href='EditProfile.php?index=".$index."'>Edit Profile</a></li>";
+			// $data = json_decode($data,true);
 		
 		
-				$index++;
-			}
+			//   $index = 0;
+			// foreach($data as $row){
+			// 	echo "
+			// 	<li> <a href='EditProfile.php?index=".$index."'>Edit Profile</a></li>";
+		
+		
+			// 	$index++;
+			// }
 		?>
-		 
+		
 		 
   <li> <a href="../Controller/LogoutAction.php">Logout</a> </li>
 </ul> 

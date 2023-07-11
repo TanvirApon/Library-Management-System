@@ -7,12 +7,12 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
     // Delete the record from the database
-    $query = "DELETE FROM employee WHERE id = '$id'";
+    $query = "DELETE FROM issue WHERE id = '$id'";
     $result = mysqli_query($conn, $query);
 
     if ($result) {
         
-        header("Location:../../View/admin/ShowEmployee.php");
+        header("Location:../../View/admin/ShowBooks.php");
 
 
     } else {

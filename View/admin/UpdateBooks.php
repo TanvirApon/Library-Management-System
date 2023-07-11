@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
     // Retrieve the issue record from the database
-    $query = "SELECT * FROM book WHERE issue_id = '$id'";
+    $query = "SELECT * FROM book WHERE id = '$id'";
     $result = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($result) == 1) {

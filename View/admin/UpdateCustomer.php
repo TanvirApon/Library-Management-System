@@ -1,42 +1,36 @@
-
-<!-- Code for Admin Test  -->
-
 <?php 
 // Connect to the database
 require '../../Model/Dbconnect.php';
 
-require '../../Controller/UpdateEmployee.php';
-
+require '../../Controller/UpdateCustomerAc.php';
 
 
 // Initialize variables
-$id = $fname = $lname =  $email = $password = $role =  "";
+$id = $fname = $lname = $username=  $email = $password = $role =  "";
 
-// Check if the 'id' parameter is set in the URL
+
+// Retrieve the issue details based on the issue ID
 if (isset($_GET['id'])) {
-    // Retrieve the book details based on the ID
     $id = $_GET['id'];
-    $query = "SELECT * FROM employee WHERE id = '$id'";
+
+    // Retrieve the issue record from the database
+    $query = "SELECT * FROM customer WHERE id = '$id'";
     $result = mysqli_query($conn, $query);
 
-    // Check if the book record exists
     if (mysqli_num_rows($result) == 1) {
+        // Issue record found
         $row = mysqli_fetch_assoc($result);
         $fname = $row["first_name"];
         $lname = $row["last_name"];
+        $lname = $row["username"];
         $email = $row["email"];
         $password = $row["password"];
-        $role = $row["role"];
-        // ...
+        $dob = $row["dob"];
     } else {
-        // Redirect to an error page or display an error message
-        echo "Book not found!";
+        // Issue record not found
+        echo "Issue record not found.";
         exit();
     }
-} else {
-    // Redirect to an error page or display an error message
-    echo "Book ID not provided!";
-    exit();
 }
 ?>
 
@@ -83,34 +77,34 @@ if (isset($_GET['id'])) {
 					<table border="">
                     <form method="post" action="UpdateEmployee.php">
                     <tr>
-					<td><label for="eid">Employee Id:</label></td>
-					<td><input type="text" id="eid" name="eid" value="<?php echo $id; ?>" required></td>
+					<td><label for="id"> id:</label></td>
+					<td><input type="text" id="id" name="id" value="<?php echo $id; ?>" required></td>
 					</tr>
-					<tr>
+                    <tr>
 					<td><label for="fname">First Name:</label></td>
 					<td><input type="text" id="fname" name="fname" value="<?php echo $fname; ?>" required></td>
 					</tr>
 					<tr>
 					<td><label for="lname">Last Name:</label></td>
-					<td><input type="text" id="lname" name="lname" value="<?php echo $lname; ?>"required></td>
+					<td><input type="text" id="lname" name="lname" value="<?php echo $lname; ?>" required></td>
 					</tr>
                   
 					<tr>
+					<td><label for="username">User Name:</label></td>
+					<td><input type="text" id="username" name="username" value="<?php echo $username; ?>" required></td>
+					</tr>
+
+                    <tr>
 					<td><label for="email">Email:</label></td>
 					<td><input type="text" id="email" name="email" value="<?php echo $email; ?>" required></td>
 					</tr>
 
 					<tr>
-					<td><label for="password">Password:</label></td>
-					<td><input type="text" id="password" name="password" value="<?php echo $password; ?>" required></td>
+					<td><label for="dob">Date Of Birth:</label></td>
+					<td><input type="text" id="dob" name="dob" value="<?php echo $dob; ?>" required></td>
 					</tr>
-					<tr>
-					<td><label for="role">Role:</label></td>
-					<td><input type="text" id="role" name="role" value="<?php echo $role; ?>" required></td>
-					</tr>
-					
-					<tr>
-						<td><input type="submit" name="update_button" value="Update Employee">
+
+						<td><input type="submit" name="update_button" value="Update">
                     </form>
 					</table>
 				</center>
