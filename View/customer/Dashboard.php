@@ -6,6 +6,8 @@
 
 session_start();
 
+$customer_id = $_SESSION['id'];
+$customer_name = $_SESSION['username'];
 
 
 ?>
@@ -28,17 +30,16 @@ session_start();
 </tr>
 
 <tr>
-	<td>Welcome,<?php echo $_SESSION['first_name'];?> </td>
+	<td>Welcome, <?php echo $customer_name;?> </td>
 </tr>
 
 <tr>
 	<td align ="middle"width= "25%"><h3><strong>User DashBoard</strong></h3><hr>
 
 <ul>
-  <li> <a href="../admin/ShowBooks.php">Show Books</a> </li>
-  <li> <a href="Message.php">Online Reseveration</a> </li>
-  <li> <a href="Product.php">WishList</a> </li>
-  <li> <a href="Books.php">Book Rating</a> </li>
+  <li> <a href="ShowBooks.php">Show Books</a> </li>
+  <li> <a href="Showissue.php">Book Issue</a></li>
+  <li> <a href="Books.php">Book Request</a> </li>
 </ul>  
 
 <br>
@@ -72,11 +73,8 @@ session_start();
 
 <table border="">
       <tr>
-         <th>Book Name</th>
-         <th>Writer</th>
-         <th>Price</th>
-               </tr>
-     
+         <th>Welcome To Library Management System</th>
+      
    </table>
 
 </center>

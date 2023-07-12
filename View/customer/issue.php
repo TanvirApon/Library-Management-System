@@ -2,7 +2,45 @@
 <!-- Code for Admin Test  -->
 
 <?php 
-require '../../Controller/AddEmployeeAction.php';
+
+require '../../Controller/issueAction.php';
+$customer_id = $_SESSION['id'];
+$customer_name = $_SESSION['username']; 
+
+
+$id=$title = $author = $publisher = $publication_year = $genre =  $quantity ="";
+
+// Retrieve the issue details based on the issue ID
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+
+    // Retrieve the issue record from the database
+    $query = "SELECT * FROM book WHERE id = '$id'";
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_num_rows($result) == 1) {
+        // Issue record found
+        $row = mysqli_fetch_assoc($result);
+        $id=$row['id'];
+        $title = $row["title"];
+        $author = $row["author"];
+        $publisher =$row["publisher"];
+        $publication_year = $row["publication_year"];
+        $genre = $row["genre"];
+        $quantity = $row["Quantity"];
+		$_SESSION['quantity'] = $quantity;
+
+      
+    } else {
+        // Issue record not found
+        echo "Issue record not found.";
+        exit();
+    }
+}
+
+
+
+
 
 ?>
 
@@ -20,19 +58,16 @@ require '../../Controller/AddEmployeeAction.php';
 			<td><?php include "../Header.php"; ?></td>
 		</tr>
 		<tr>
-			<td>Welcome, ADMIN </td>
+		<td>Welcome, <?php echo $customer_name;?> </td>
 		</tr>
 		<tr>
 			<td align="middle" width="25%">
 				<h3><strong>User Dashboard</strong></h3>
 				<hr>
 				<ul>
-					<li><a href="../admin/ShowBooks.php">Show Books</a></li>
-					<li><a href="../admin/AddBooks.php">Manager</a></li>
-					<li><a href="Libarian.php">Librarian</a></li>
-					<li><a href="Books.php">Customer</a></li>
-                    <li><a href="Books.php">Whish List</a></li>
-                    <li><a href="Books.php">Book Request</a></li>
+				<li> <a href="ShowBooks.php">Show Books</a> </li>
+  				<li> <a href="Showissue.php">Book Issue</a></li>
+  				<li> <a href="Books.php">Book Request</a> </li>
 				</ul>  
 				<br>
 				<strong>User Profile</strong></h3>
@@ -44,7 +79,7 @@ require '../../Controller/AddEmployeeAction.php';
 			</td>
 			<td width="75%">
 				<center>
-					<h2><strong>Admin</strong></h2>
+					<h2><strong>Customer</strong></h2>
 				
 					<table border="">
                     <form method="post" action="../../Controller/issueAction.php">
@@ -78,23 +113,35 @@ require '../../Controller/AddEmployeeAction.php';
 					<td><label for="quantity">Quantity:</label></td>
 					<td><input type="text" id="quantity" name="quantity" required></td>
 					</tr>
+                   <?php
+
+                     if($quantity==0)
+					 {
+						echo '<p style="color: red;">Current Book is not available.</p>';
+					 }
+
+
+                  ?>
+
 					<tr>
                     <td><label for="Date">Issue Date:</label></td>
-                    <td><input type="date" id="issue_date" name="issue_date"></td>
+                    <td><input type="date" id="issue_date" name="issue_date" ></td>
                     </tr>
 
 					<tr>
                     <td><label for="Date">Expired Date:</label></td>
-                    <td><input type="date" id="expired_date" name="expired_date"></td>
+                    <td><input type="date" id="expired_date" name="expired_date" ></td>
                     </tr>
+
+ 
                     <tr>
 					<td><label for="name">Customer User Name:</label></td>
-					<td><input type="text" id="name" name="name" required></td>
+					<td><input type="text" id="name" name="name" required value="<?php echo $customer_name; ?>"></td>
 					</tr>
        
                     <tr>
 					<td><label for="id">Customer Id:</label></td>
-					<td><input type="text" id="id" name="id" required></td>
+					<td><input type="text" id="id" name="id" required value="<?php echo $customer_id; ?>"></td>
 					</tr>                     
 					
 					

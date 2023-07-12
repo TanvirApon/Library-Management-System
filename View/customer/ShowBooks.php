@@ -1,17 +1,14 @@
 <!-- Code for Admin Test  -->
 
 <?php 
+
+
 session_start();
 
-// if(isset($_SESSION['email']))
-// {
-//     header("Location: ../View/Dashboard.php");
-    
-// }
-// else
-// {
-//     header("Location:../View/Login.php");
-// }
+$customer_id = $_SESSION['id'];
+$customer_name = $_SESSION['username'];
+
+
 ?>
 
 
@@ -31,7 +28,7 @@ session_start();
         </tr>
 
         <tr>
-            <td>Welcome, ADMIN </td>
+        <td>Welcome, <?php echo $customer_name;?> </td>
         </tr>
 
         <tr>
@@ -40,11 +37,9 @@ session_start();
                 <hr>
 
                 <ul>
-                    <li> <a href="Books.php">Show Books</a> </li>
-                    <li> <a href="Message.php">Online Reseveration</a> </li>
-                    <li> <a href="Product.php">WishList</a> </li>
-                    <li> <a href="Books.php">Book Rating</a> </li>
-                    <li> <a href="Message.php">Request for a Book</a> </li>
+                <li> <a href="ShowBooks.php">Show Books</a> </li>
+                <li> <a href="Showissue.php">Book Issue</a></li>
+                <li> <a href="Books.php">Book Request</a> </li>
                 </ul>  
 
                 <br>
@@ -103,7 +98,7 @@ session_start();
                                 echo "<td align='middle'>".$row['shelf_number']."</td>";
                                 echo "<td align='middle'>".$row['language']."</td>";
                                 echo "<td align='middle'>".$row['total_pages']."</td>";
-                                echo "<td align='middle'><a href='../issue.php?id=".$row['id']."'>Issue Book</a></td>";
+                                echo "<td align='middle'><a href='issue.php?id=".$row['id']."'>Issue Book</a></td>";
                                 echo "</tr>";
                             }
                         } else {

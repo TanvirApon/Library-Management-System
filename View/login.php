@@ -4,7 +4,7 @@
 <?php
 $rememberedEmail = isset($_COOKIE['remember_email']) ? $_COOKIE['remember_email'] : "";
 require '../Controller/LoginAction.php';
-require '../Controller/RegisterAction.php';
+//require '../Controller/RegisterAction.php';
 ?>
 
 
