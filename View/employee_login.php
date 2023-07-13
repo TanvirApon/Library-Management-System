@@ -3,7 +3,7 @@
 
 <?php
 $rememberedEmail = isset($_COOKIE['remember_email']) ? $_COOKIE['remember_email'] : "";
-require '../Controller/LoginAction.php';
+require '../Controller/employeeLoginAction.php';
 //require '../Controller/RegisterAction.php';
 ?>
 
@@ -18,7 +18,7 @@ require '../Controller/LoginAction.php';
 
 </head>
 <body>
-	<form action="login.php" method="POST" >
+	<form action="employee_login.php" method="POST" >
     <center>
 			<fieldset style="text-align:center; height: 300px; width: 400px;">
 			<legend>Login Here</legend>
@@ -49,7 +49,9 @@ require '../Controller/LoginAction.php';
 		<tr><td colspan="3"><?php echo isset($_SESSION['global_error_msg']) ? $_SESSION['global_error_msg'] : ""?></td></tr>
 
 
-		<tr><td colspan="3">Register <a href="Register.php">Click here</a></td></tr>
+		<tr><td colspan="3">Customer Login<a href="customer_login.php">Click here</a></td></tr>
+		<tr><td colspan="3">Admin Login <a href="admin_login.php">Click here</a></td></tr>
+		<tr><td colspan="3"> Customer Register <a href="Register.php">Click here</a></td></tr>
 	</table>
 
 		</fieldset>

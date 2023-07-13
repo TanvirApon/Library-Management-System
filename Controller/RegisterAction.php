@@ -95,7 +95,7 @@ if(isset($_POST['register_button'])){
 
 
 	if(empty($error_array)) {
-		$password = md5($password); //Encrypt password before sending to database
+		// $password = md5($password); //Encrypt password before sending to database
 
 		//Generate username by concatenating first name and last name
 		$username = strtolower($fname . "_" . $lname);
