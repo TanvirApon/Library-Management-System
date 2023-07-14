@@ -26,13 +26,15 @@ if (isset($_POST['login_button'])) {
         $_SESSION['id'] = $employee_id; // Store employee ID in session
         $_SESSION['username'] = $employee_name; // Store employee name in session
 
-        if ($role === 'manager') {
+        if ($role === "Manager" || $role === "manager") {
+
+            
             header("Location: ../View/manager/Dashboard.php");
 
         } 
         
 
-        else if ($role === 'librarian') {
+        else if ($role === 'Librarian' || $role === 'librarian') {
             
             header("Location: ../View/librarian/Dashboard.php");
         }

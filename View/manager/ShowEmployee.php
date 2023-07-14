@@ -82,7 +82,7 @@ session_start();
                         // Connect to the database
                         require '../../Model/Dbconnect.php';
 
-                        $query = "SELECT * FROM employee";
+                        $query = "SELECT * FROM employee WHERE role = 'Libarian'";
                         $result = mysqli_query($conn, $query);
 
                         if(mysqli_num_rows($result) > 0) {

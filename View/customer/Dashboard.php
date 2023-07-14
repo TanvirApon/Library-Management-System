@@ -63,7 +63,7 @@ $customer_name = $_SESSION['username'];
 		?>
 		
 		 
-  <li> <a href="../Controller/LogoutAction.php">Logout</a> </li>
+		<li><a href="../../Controller/Logout.php">Logout</a></li>
 </ul> 
 </td>
 

@@ -37,7 +37,7 @@ require '../../Controller/AddEmployeeAction.php';
 				<hr>
 				<ul>
 					
-					<li><a href="../../Controller/Logout.php">Logout</a></li>
+				<li><a href="../../Controller/Logout.php">Logout</a></li>
 				</ul> 
 			</td>
 			<td width="75%">

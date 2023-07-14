@@ -3,8 +3,13 @@
 
 <?php
 $rememberedEmail = isset($_COOKIE['remember_email']) ? $_COOKIE['remember_email'] : "";
-require '../Controller/employeeLoginAction.php';
-//require '../Controller/RegisterAction.php';
+require '../Controller/employeeLogin.php';
+
+
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+
 ?>
 
 
@@ -18,7 +23,7 @@ require '../Controller/employeeLoginAction.php';
 
 </head>
 <body>
-	<form action="employee_login.php" method="POST" >
+	<form action="../Controller/employeeLogin.php" method="POST" >
     <center>
 			<fieldset style="text-align:center; height: 300px; width: 400px;">
 			<legend>Login Here</legend>

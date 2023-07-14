@@ -59,7 +59,7 @@ session_start();
                     //     $index++;
                     // }
                     ?> 
-                    <li> <a href="../../Controller/Logout.php">Logout</a> </li>
+                    <li><a href="../../Controller/Logout.php">Logout</a></li>
                 </ul> 
             </td>
 
